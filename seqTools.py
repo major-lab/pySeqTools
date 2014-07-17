@@ -78,7 +78,11 @@ class fastaContainer:
             return None
         return res[0]
 
-
+def revCompl(seq):
+    res = seq[::-1].upper()
+    transtab = "".maketrans("AUTCG","UAAGC")
+    res= res.translate(transtab)
+    return res.upper()
 
 
 
@@ -110,7 +114,7 @@ if __name__ == '__main__':
     print (tab)
     tab = []"""
 
-    exemple = s.seq
+    """exemple = s.seq
     m = re.search(r"5\((\d+)-(\d+)\)",tag)
     if m:
         tab.append(int(m.group(1)))
@@ -127,10 +131,13 @@ if __name__ == '__main__':
     seqs = []
     for i in range (0,int(len(tab)/2)):
         seqs.append(exemple[tab[i]:tab[i+1]])
+    """
+    print (s.seq)
+    print (s.seq.upper())
+    print (revCompl(s.seq))
 
-    print (seqs)
-
-
+    print ()
+    print ('A'+revCompl('A'))
 
 
 
