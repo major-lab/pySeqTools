@@ -49,12 +49,16 @@ def getFPScan(seedtype):
             res[1] = 1
         elif seedtype == "7mer-m8":
             res[2] = 1
-        else:
+        elif seedtype == "8mer":
             res = [1,1,1,1]
 
     return res
 
-
+def sumFPScan(fp,newFp):
+    res = fp.copy()
+    for i in range(0,len(newFp)):
+        res[i] +=  newFp[i]
+    return res
 
 if __name__ == '__main__':
     fc = fastaContainer("../seq_p21.fa")
@@ -63,8 +67,10 @@ if __name__ == '__main__':
     mir = fc.findSeq("MIMAT0000063","MIMAT")
     print (mir.seq)
     res = scan(mRNA,mir)
+    fp = [0,0,0,0]
     for pos in  res.keys():
         doPPrint(mRNA.seq,mir.seq,pos,offsetmRNA=30)
-        print (getFPScan(res.get(pos)))
-    print (res)
+        newFp = getFPScan(res.get(pos))
+        fp = sumFPScan(fp,newFp)
+    print (fp)
 

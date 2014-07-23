@@ -8,6 +8,8 @@ class Sequence:
         self.name = name
         self.seq = seq
         self.ID=""
+        self.CDS=-1
+        self.UTR3=-1
 
 
     def __repr__(self):

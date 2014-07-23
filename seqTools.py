@@ -16,6 +16,15 @@ class fastaContainer:
     def __del__(self):
         self.f.close()
 
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.end:
+            raise StopIteration
+        else :
+            return self.nextSeq()
+
 
     def nextSeq(self):
         """return the next sequence in the fasta file"""
