@@ -42,7 +42,8 @@ def getPPrint(mRNA,miRNA,mRNAStart,offsetmRNA = 30,seedLength = 7):
     if offsetmRNA <0 :
         offsetmRNA = 0
     res = ""
-    seq1 = mRNA[mRNAStart + seedLength - len(miRNA) - offsetmRNA : mRNAStart + seedLength + offsetmRNA]  #seq1 mRNA en reverse
+
+    seq1 = mRNA[mRNAStart + seedLength - len(miRNA) - offsetmRNA : mRNAStart + seedLength + offsetmRNA]
     seq2 = miRNA[::-1]
     res += ("5' - " + seq1 + " mRNA "+str(mRNAStart)+'\n')
     res += (offsetmRNA * ' ' + "     " + getMatches(seq1.upper(), seq2.upper(), offsetmRNA, 0)+'\n')

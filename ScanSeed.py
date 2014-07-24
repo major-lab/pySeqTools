@@ -25,18 +25,21 @@ def scan(mRNA,miR):
             m8=True
         if A1 and m8:
             seedtype = "8mer"
+            res[m.start()-1] = seedtype
             #in the case of 8mer, position on m8
 
         elif m8:
             seedtype = "7mer-m8"
+            res[m.start()-1] = seedtype
             #in the case of 7mer-m8, position on m8
 
         elif A1:
             seedtype = "7mer-A1"
+            res[m.start()] = seedtype
             #in the case of 7mer-A1, position on m7
         else:
             seedtype = "6mer"
-        res[m.start()] = seedtype
+            res[m.start()] = seedtype
     return res
 
 def getFPScan(seedtype):
